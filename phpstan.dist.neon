@@ -1,0 +1,7 @@
+parameters:
+    level: 6
+    excludePaths:
+        - src/DependencyInjection
+    paths:
+        - src/
+        - tests/
