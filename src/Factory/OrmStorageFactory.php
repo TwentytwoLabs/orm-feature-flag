@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TwentytwoLabs\FeatureFlagBundle\Factory;
+namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use TwentytwoLabs\FeatureFlagBundle\Storage\OrmStorage;
+use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage\OrmStorage;
+use TwentytwoLabs\FeatureFlagBundle\Factory\AbstractStorageFactory;
 use TwentytwoLabs\FeatureFlagBundle\Storage\StorageInterface;
 
 final class OrmStorageFactory extends AbstractStorageFactory

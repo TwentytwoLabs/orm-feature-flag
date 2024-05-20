@@ -12,12 +12,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "TwentytwoLabs\\FeatureFlagBundle\\": "./src"
+      "TwentytwoLabs\\FeatureFlagBundle\\Bridge\\Doctrine\\Orm\\": "./src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "TwentytwoLabs\\FeatureFlagBundle\\Tests\\": "./tests"
+      "TwentytwoLabs\\FeatureFlagBundle\\Bridge\\Doctrine\\Orm\\Tests\\": "./tests"
     }
   },
   "config": {
@@ -36,7 +36,7 @@
   },
   "require": {
     "php": ">= 8.1",
-    "twentytwo-labs/feature-flag-bundle": "^1.0",
+    "twentytwo-labs/feature-flag-bundle": "dev-master",
     "doctrine/orm": "*"
   },
   "require-dev": {

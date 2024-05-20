@@ -9,8 +9,8 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage\OrmStorage;
 use TwentytwoLabs\FeatureFlagBundle\Model\FeatureInterface;
-use TwentytwoLabs\FeatureFlagBundle\Storage\OrmStorage;
 
 final class OrmStorageTest extends TestCase
 {

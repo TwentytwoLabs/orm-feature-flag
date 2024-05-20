@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29dab4be92e5ec28adfa0fc27ddd92e5",
+    "content-hash": "4547727809e3e0eb5cd8684e572ac6e9",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -3223,7 +3223,7 @@
         },
         {
             "name": "twentytwo-labs/feature-flag-bundle",
-            "version": "1.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TwentytwoLabs/feature-flag-bundle.git",
@@ -3252,6 +3252,7 @@
                 "symfony/security-bundle": "^5.4|^6.0|^7.0",
                 "twig/twig": "^2.0|^3.0"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
@@ -8058,7 +8059,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "twentytwo-labs/feature-flag-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

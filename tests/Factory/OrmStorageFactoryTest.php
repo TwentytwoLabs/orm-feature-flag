@@ -7,10 +7,10 @@ namespace TwentytwoLabs\FeatureFlagBundle\Tests\Factory;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use PHPUnit\Framework\MockObject\MockObject;
+use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Factory\OrmStorageFactory;
+use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage\OrmStorage;
 use TwentytwoLabs\FeatureFlagBundle\Exception\ConfigurationException;
-use TwentytwoLabs\FeatureFlagBundle\Factory\OrmStorageFactory;
 use TwentytwoLabs\FeatureFlagBundle\Model\Feature;
-use TwentytwoLabs\FeatureFlagBundle\Storage\OrmStorage;
 use PHPUnit\Framework\TestCase;
 
 final class OrmStorageFactoryTest extends TestCase

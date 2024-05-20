@@ -5,3 +5,9 @@ parameters:
     paths:
         - src/
         - tests/
+
+    ignoreErrors:
+        -
+            message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface::getRepository#'
+            paths:
+                - src

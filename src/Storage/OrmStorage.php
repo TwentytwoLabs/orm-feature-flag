@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TwentytwoLabs\FeatureFlagBundle\Storage;
+namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use TwentytwoLabs\FeatureFlagBundle\Model\FeatureInterface;
+use TwentytwoLabs\FeatureFlagBundle\Storage\StorageInterface;
 
 final class OrmStorage implements StorageInterface
 {
