@@ -14,9 +14,11 @@ twentytwo_labs_feature_flag:
          factory: twenty-two-labs.feature-flags.factory.orm
          options:
             class: ENTITY
+            identifier: IDENTIFIER #default "key"
 ```
 
 where:
 - `ENTITY` is an Entity witch implement [`FeatureInterface`](https://github.com/TwentytwoLabs/feature-flag-bundle/blob/master/src/Model/FeatureInterface.php)
+- `IDENTIFIER` is a field in ENTITY
 
 

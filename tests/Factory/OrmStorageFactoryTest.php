@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TwentytwoLabs\FeatureFlagBundle\Tests\Factory;
+namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Tests\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
@@ -37,7 +37,7 @@ final class OrmStorageFactoryTest extends TestCase
         $this->expectExceptionMessage('Error while configure storage default. Verify your configuration at "twenty-two-labs.feature-flags.storages.default.options". The required option "class" is missing.');
 
         $factory = $this->getFactory();
-        $factory->createStorage('default');
+        $factory->createStorage('default', ['identifier' => 'slug']);
     }
 
     public function testShouldNotCreateStorageBecauseClassIsAnArray(): void
@@ -46,7 +46,17 @@ final class OrmStorageFactoryTest extends TestCase
         $this->expectExceptionMessage('Error while configure storage default. Verify your configuration at "twenty-two-labs.feature-flags.storages.default.options". The option "class" with value array is expected to be of type "string", but is of type "array".');
 
         $factory = $this->getFactory();
-        $storage = $factory->createStorage('default', ['class' => []]);
+        $storage = $factory->createStorage('default', ['class' => [], 'identifier' => 'slug']);
+        $this->assertInstanceOf(OrmStorage::class, $storage);
+    }
+
+    public function testShouldNotCreateStorageBecauseIdentifierIsAnArray(): void
+    {
+        $this->expectException(ConfigurationException::class);
+        $this->expectExceptionMessage('Error while configure storage default. Verify your configuration at "twenty-two-labs.feature-flags.storages.default.options". The option "identifier" with value array is expected to be of type "string", but is of type "array"');
+
+        $factory = $this->getFactory();
+        $storage = $factory->createStorage('default', ['class' => Feature::class, 'identifier' => []]);
         $this->assertInstanceOf(OrmStorage::class, $storage);
     }
 
@@ -56,7 +66,7 @@ final class OrmStorageFactoryTest extends TestCase
         $this->em->expects($this->once())->method('getRepository')->with(Feature::class)->willReturn($objectRepository);
 
         $factory = $this->getFactory();
-        $storage = $factory->createStorage('default', ['class' => Feature::class]);
+        $storage = $factory->createStorage('default', ['class' => Feature::class, 'identifier' => 'slug']);
         $this->assertInstanceOf(OrmStorage::class, $storage);
     }
 

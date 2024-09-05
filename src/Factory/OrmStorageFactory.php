@@ -25,16 +25,18 @@ final class OrmStorageFactory extends AbstractStorageFactory
             throw new \LogicException('The "doctrine/orm" library must be installed.');
         }
 
-        $this->validate($storageName, $options);
+        $options = $this->validate($storageName, $options);
 
-        return new OrmStorage($this->em, $options['class']);
+        return new OrmStorage($this->em, $options);
     }
 
     protected function configureOptionResolver(OptionsResolver $resolver): void
     {
         $resolver
             ->setRequired('class')
-            ->setAllowedTypes('class', ['string'])
+            ->setDefault('identifier', 'key')
+            ->addAllowedTypes('class', ['string'])
+            ->addAllowedTypes('identifier', ['string'])
         ;
     }
 }

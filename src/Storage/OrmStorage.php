@@ -13,10 +13,16 @@ final class OrmStorage implements StorageInterface
 {
     /** @var ObjectRepository<FeatureInterface> */
     private ObjectRepository $objectRepository;
+    /** @var array<string, mixed> */
+    private array $options;
 
-    public function __construct(EntityManagerInterface $em, string $class)
+    /**
+     * @param array<string, mixed> $options
+     */
+    public function __construct(EntityManagerInterface $em, array $options)
     {
-        $this->objectRepository = $em->getRepository($class);
+        $this->objectRepository = $em->getRepository($options['class']);
+        $this->options = $options;
     }
 
     public function all(): array
@@ -26,6 +32,6 @@ final class OrmStorage implements StorageInterface
 
     public function get(string $key): ?FeatureInterface
     {
-        return $this->objectRepository->findOneBy(['name' => $key]);
+        return $this->objectRepository->findOneBy([$this->options['identifier'] => $key]);
     }
 }

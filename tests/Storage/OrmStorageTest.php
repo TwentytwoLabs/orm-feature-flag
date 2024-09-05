@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TwentytwoLabs\FeatureFlagBundle\Tests\Storage;
+namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Tests\Storage;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
@@ -63,6 +63,6 @@ final class OrmStorageTest extends TestCase
         $em = $this->createMock(EntityManagerInterface::class);
         $em->expects($this->once())->method('getRepository')->with(\stdClass::class)->willReturn($this->objectRepository);
 
-        return new OrmStorage($em, \stdClass::class);
+        return new OrmStorage($em, ['class' => \stdClass::class, 'identifier' => 'name']);
     }
 }
