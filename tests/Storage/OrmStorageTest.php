@@ -16,8 +16,8 @@ use TwentytwoLabs\FeatureFlagBundle\Model\FeatureInterface;
 
 final class OrmStorageTest extends TestCase
 {
-    private NormalizerInterface $normalizer;
-    private DenormalizerInterface $denormalizer;
+    private NormalizerInterface|MockObject $normalizer;
+    private DenormalizerInterface|MockObject $denormalizer;
     /** @var MockObject|ObjectRepository<FeatureInterface> */
     private ObjectRepository|MockObject $objectRepository;
 
