@@ -6,16 +6,25 @@ namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage\OrmStorage;
 use TwentytwoLabs\FeatureFlagBundle\Factory\AbstractStorageFactory;
 use TwentytwoLabs\FeatureFlagBundle\Storage\StorageInterface;
 
 final class OrmStorageFactory extends AbstractStorageFactory
 {
+    private NormalizerInterface $normalizer;
+    private DenormalizerInterface $denormalizer;
     private ?EntityManagerInterface $em;
 
-    public function __construct(EntityManagerInterface $em = null)
-    {
+    public function __construct(
+        NormalizerInterface $normalizer,
+        DenormalizerInterface $denormalizer,
+        EntityManagerInterface $em = null,
+    ) {
+        $this->normalizer = $normalizer;
+        $this->denormalizer = $denormalizer;
         $this->em = $em;
     }
 
@@ -27,7 +36,7 @@ final class OrmStorageFactory extends AbstractStorageFactory
 
         $options = $this->validate($storageName, $options);
 
-        return new OrmStorage($this->em, $options);
+        return new OrmStorage($this->normalizer, $this->denormalizer, $this->em, $options);
     }
 
     protected function configureOptionResolver(OptionsResolver $resolver): void
