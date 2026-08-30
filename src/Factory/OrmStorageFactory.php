@@ -21,7 +21,7 @@ final class OrmStorageFactory extends AbstractStorageFactory
     public function __construct(
         NormalizerInterface $normalizer,
         DenormalizerInterface $denormalizer,
-        EntityManagerInterface $em = null,
+        ?EntityManagerInterface $em = null,
     ) {
         $this->normalizer = $normalizer;
         $this->denormalizer = $denormalizer;

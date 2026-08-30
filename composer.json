@@ -35,7 +35,7 @@
     "phpstan": "./vendor/bin/phpstan analyse"
   },
   "require": {
-    "php": ">= 8.1",
+    "php": ">= 8.2",
     "twentytwo-labs/feature-flag-bundle": "*",
     "doctrine/orm": "*",
     "symfony/serializer": "^5.4|^6.0|^7.0"
