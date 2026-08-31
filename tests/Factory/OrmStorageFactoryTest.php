@@ -6,8 +6,8 @@ namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Tests\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\MockObject\MockObject;
-use stdClass;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Factory\OrmStorageFactory;
@@ -16,6 +16,7 @@ use TwentytwoLabs\FeatureFlagBundle\Exception\ConfigurationException;
 use TwentytwoLabs\FeatureFlagBundle\Model\Feature;
 use PHPUnit\Framework\TestCase;
 
+#[AllowMockObjectsWithoutExpectations]
 final class OrmStorageFactoryTest extends TestCase
 {
     private NormalizerInterface|MockObject $normalizer;
@@ -35,7 +36,7 @@ final class OrmStorageFactoryTest extends TestCase
         $this->expectExceptionMessage('The "doctrine/orm" library must be installed.');
 
         $factory = new OrmStorageFactory($this->normalizer, $this->denormalizer);
-        $factory->createStorage('default', ['class' => stdClass::class]);
+        $factory->createStorage('default', ['class' => \stdClass::class]);
     }
 
     public function testShouldNotCreateStorageBecauseClassIsMissing(): void

@@ -7,6 +7,7 @@ namespace TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Tests\Storage;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ObjectRepository;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use TwentytwoLabs\FeatureFlagBundle\Bridge\Doctrine\Orm\Storage\OrmStorage;
 use TwentytwoLabs\FeatureFlagBundle\Model\FeatureInterface;
 
+#[AllowMockObjectsWithoutExpectations]
 final class OrmStorageTest extends TestCase
 {
     private NormalizerInterface|MockObject $normalizer;
